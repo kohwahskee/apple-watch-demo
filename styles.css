@@ -1,0 +1,176 @@
+:root {
+  --color-background: rgb(34, 37, 43);
+}
+
+.red {
+  background: rgb(253, 67, 98) !important;
+}
+
+.purple {
+  background: rgb(240, 142, 255) !important;
+}
+
+.green {
+  background: lightgreen !important;
+}
+
+.blue {
+  background: lightblue !important;
+}
+
+.yellow {
+  background: yellow !important;
+}
+
+#watch-face {
+  position: relative;
+  background: black;
+  width: 20em;
+  /* height: 20em; */
+  border-radius: 2em;
+  aspect-ratio: 13/16;
+  overflow: hidden;
+}
+
+#watch-face:hover {
+  cursor: grab;
+}
+
+#watch-face:active {
+  cursor: grabbing;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-background);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#apps-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* height: 100%; */
+  inset: 0;
+}
+
+.app-row {
+  display: flex;
+  flex-direction: row;
+  margin: .3em 0;
+  /* pointer-events: none; */
+}
+
+.app-icon {
+  background: white;
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+  margin: 0 .3em;
+  transform: scale(100%);
+  /* pointer-events: none; */
+}
+
+/* DEBUGGING ONLY */
+/* #watch-face::before {
+  content: "";
+  position: absolute;
+  width: 16em;
+  aspect-ratio: 13/16;
+  background-color: rgba(255, 255, 255, 0.5);
+  inset: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+} 
+
+.debug-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  width: 4em;
+  height: 4em;
+}
+
+.left-cord,
+.top-cord,
+.bottom-cord,
+.right-cord {
+  position: absolute;
+  color: white;
+  user-select: none;
+}
+
+.left-cord {
+  top: 50%;
+  left: 0;
+}
+
+.top-cord {
+  top: 0;
+  right: 50%;
+}
+
+.right-cord {
+  top: 50%;
+  right: 0;
+}
+
+.bottom-cord {
+  bottom: 0;
+  right: 50%;
+}
+
+.icon-left-cord {
+  position: absolute;
+  inset: 0;
+  transform: translate(-20%, -20%);
+  color: white;
+  font-size: .5em;
+  user-select: none;
+}
+
+.x-line,
+.y-line {
+  user-select: none;
+  position: absolute;
+}
+
+.y-line {
+  width: 200vw;
+  height: .1em;
+  background: blue;
+}
+
+.y-cord {
+  content: "12";
+  position: absolute;
+  color: blue;
+  left: 50%;
+  top: 50%;
+  transform: translate(-200%, -100%);
+}
+
+.x-line {
+  width: .1em;
+  height: 200vh;
+  background: red;
+}
+
+.x-cord {
+  content: "12";
+  position: absolute;
+  color: red;
+  left: 50%;
+  top: 50%;
+  transform: translate(20%, -700%);
+}*/
