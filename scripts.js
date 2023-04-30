@@ -1,6 +1,7 @@
+
 // populating DOM
 const appContainer = document.getElementById('apps-container');
-const numOfRows = 3; // must be odd
+const numOfRows = 11; // must be odd
 const minIconInRow = 1;
 const midRow = Math.round(numOfRows / 2);
 const colorChoices = ['red', 'purple', 'green', 'blue'];
@@ -30,31 +31,108 @@ for (i = numOfRows; i >= midRow + minIconInRow; i--) {
   appContainer.append(appRow);
 }
 
+
+
 // Dragging Event
 const watchFace = document.getElementById('watch-face');
 const iconList = Array.from(document.getElementsByClassName('app-icon'));
-watchFace.addEventListener("mousedown", e => {
-  document.addEventListener("mousemove", draggingHandler)
-})
 
-document.addEventListener('mouseup', e => {
-  document.removeEventListener('mousemove', draggingHandler);
-})
-
+requestAnimationFrame(() => scaleToFit(watchFace, iconList));
 scaleToFit(watchFace, iconList);
+
+watchFace.addEventListener("mousedown", dragStart);
+document.addEventListener('mouseup', dragStop);
+
+function dragStart(e) {
+  // resets 
+  const tempTop = appContainer.getBoundingClientRect().top - watchFace.getBoundingClientRect().top;
+  const tempLeft = appContainer.getBoundingClientRect().left - watchFace.getBoundingClientRect().left;
+  setPosition(tempTop, tempLeft, appContainer);
+
+  document.addEventListener("mousemove", draggingHandler);
+}
+
+function dragStop(e) {
+  // If middle point of container is outside of watch face, gradually transition back to center
+  fitBoundInCanvas2(appContainer, watchFace);
+
+  document.removeEventListener('mousemove', draggingHandler);
+}
+
+
+function fitBoundInCanvas(container, parent) {
+  const containerBound = container.getBoundingClientRect();
+  const parentBound = parent.getBoundingClientRect();
+
+  container.style.transition = 'top 200ms, left 200ms';
+
+  if (containerBound.right < parentBound.left + parentBound.width / 2) {
+    setPosition(null, (0 - containerBound.width) + (parentBound.width / 2), container);
+  }
+  if (containerBound.left > parentBound.left + parentBound.width / 2) {
+    setPosition(null, parentBound.width / 2, container);
+  }
+  if (containerBound.bottom < parentBound.top + parentBound.height / 2) {
+    setPosition((0 - containerBound.height) + (parentBound.height / 2), null, container);
+  }
+  if (containerBound.top > parentBound.top + parentBound.height / 2) {
+    setPosition(parentBound.height / 2, null, container);
+  }
+
+  setTimeout(() => {
+    container.style.transition = 'none';
+  }, 200);
+
+}
+
+function fitBoundInCanvas2(container, parent) {
+  const containerBound = container.getBoundingClientRect();
+  const parentBound = parent.getBoundingClientRect();
+
+  container.style.transition = 'top 200ms, left 200ms';
+  console.log(parentBound.left);
+  console.log(containerBound.width);
+  console.log(parentBound.width);
+  if (containerBound.right < parentBound.right) {
+
+    setPosition(null, 0 - (containerBound.width - parentBound.width), container);
+  }
+  if (containerBound.left > parentBound.left) {
+    setPosition(null, 0, container);
+  }
+  if (containerBound.bottom < parentBound.bottom) {
+    setPosition(0 - (containerBound.height - parentBound.height), null, container);
+  }
+  if (containerBound.top > parentBound.top) {
+    setPosition(0, null, container);
+  }
+
+  setTimeout(() => {
+    container.style.transition = 'none';
+  }, 200);
+
+}
+
 
 function draggingHandler(e) {
   e.preventDefault();
   // Move icon according to mouse movement
-  appContainer.style.top = (Number(appContainer.style.top.substring(0, appContainer.style.top.length - 2)) + e.movementY) + 'px';
-  appContainer.style.left = (Number(appContainer.style.left.substring(0, appContainer.style.left.length - 2)) + e.movementX) + 'px';
-
-  scaleToFit(watchFace, iconList);
+  const tempTop = Number(appContainer.style.top.substring(0, appContainer.style.top.length - 2)) + e.movementY;
+  const tempLeft = Number(appContainer.style.left.substring(0, appContainer.style.left.length - 2)) + e.movementX;
+  setPosition(tempTop, tempLeft, appContainer);
 }
 
-
+function setPosition(top, left, element) {
+  if (top !== null) {
+    element.style.top = top + 'px';
+  }
+  if (left !== null) {
+    element.style.left = left + 'px';
+  }
+}
 
 function scaleToFit(parentContainer, iconList) {
+  requestAnimationFrame(() => scaleToFit(watchFace, iconList));
   // COLLISION DETECTION
   const parentBounds = parentContainer.getBoundingClientRect();
 

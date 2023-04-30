@@ -24,6 +24,10 @@
 
 #watch-face {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background: black;
   width: 20em;
   /* height: 20em; */
@@ -57,7 +61,7 @@ body {
   align-items: center;
   flex-direction: column;
   /* height: 100%; */
-  inset: 0;
+  /* inset: 0; */
 }
 
 .app-row {
@@ -78,6 +82,13 @@ body {
 }
 
 /* DEBUGGING ONLY */
+
+#apps-container {
+  /* border: 1px solid white; */
+  width: fit-content;
+  height: fit-content;
+}
+
 /* #watch-face::before {
   content: "";
   position: absolute;
