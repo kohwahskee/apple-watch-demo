@@ -8,8 +8,12 @@ const colorChoices = ['red', 'purple', 'green', 'blue'];
 
 function addNewIcon(parentNode) {
   const appIcon = document.createElement('div');
-  appIcon.className = `app-icon ${colorChoices[Math.floor((Math.random() * colorChoices.length))]}`;
-
+  appIcon.className = `app-icon `;
+  const appIconImg = document.createElement('img');
+  appIconImg.setAttribute('src', `./assets/icons/icon_${Math.floor(Math.random() * 39)}.svg`)
+  appIconImg.setAttribute('width', '70%');
+  appIconImg.setAttribute('height', '70%');
+  appIcon.append(appIconImg);
   parentNode.append(appIcon);
 }
 for (i = minIconInRow; i <= midRow; i++) {
