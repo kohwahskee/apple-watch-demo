@@ -6,11 +6,22 @@ const minIconInRow = 1;
 const midRow = Math.round(numOfRows / 2);
 const colorChoices = ['red', 'purple', 'green', 'blue'];
 
+const usedIconIndex = [];
+function getUniqueIconIndex() {
+  const iconIndex = Math.floor(Math.random() * 55);
+  if (usedIconIndex.includes(iconIndex)) {
+    return getUniqueIconIndex();
+  } else {
+    usedIconIndex.push(iconIndex);
+    return iconIndex;
+  }
+}
 function addNewIcon(parentNode) {
   const appIcon = document.createElement('div');
-  appIcon.className = `app-icon `;
   const appIconImg = document.createElement('img');
-  appIconImg.setAttribute('src', `./assets/icons/icon_${Math.floor(Math.random() * 55)}.svg`)
+  const iconIndex = getUniqueIconIndex();
+  appIcon.className = `app-icon `;
+  appIconImg.setAttribute('src', `./assets/icons/icon_${iconIndex}.svg`)
   appIconImg.setAttribute('width', '100%');
   appIconImg.setAttribute('height', '100%');
   appIcon.append(appIconImg);
