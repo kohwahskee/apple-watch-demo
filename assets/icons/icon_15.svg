@@ -1,3 +1,4 @@
-<svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" enable-background="new 0 0 48 48">
-    <polygon fill="#FFC107" points="33,22 23.6,22 30,5 19,5 13,26 21.6,26 17,45"/>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="24" fill="#FF4747"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.2957 16H27.6095L25.5742 19.2006H12.2757L14.2957 16ZM22.1913 28.8078L30.3304 16.0305L41 32H37.0639L34.9213 28.8078H28.7509L30.7242 25.6045H32.8079L30.497 22.1458L24.1592 32H7L11.1116 25.6045H8.1482L10.2147 22.4027H22.7241L20.6572 25.6045H15.2461L13.1633 28.8078H22.1913Z" fill="white"/>
 </svg>

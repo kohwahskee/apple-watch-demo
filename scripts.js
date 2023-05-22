@@ -10,9 +10,9 @@ function addNewIcon(parentNode) {
   const appIcon = document.createElement('div');
   appIcon.className = `app-icon `;
   const appIconImg = document.createElement('img');
-  appIconImg.setAttribute('src', `./assets/icons/icon_${Math.floor(Math.random() * 39)}.svg`)
-  appIconImg.setAttribute('width', '70%');
-  appIconImg.setAttribute('height', '70%');
+  appIconImg.setAttribute('src', `./assets/icons/icon_${Math.floor(Math.random() * 55)}.svg`)
+  appIconImg.setAttribute('width', '100%');
+  appIconImg.setAttribute('height', '100%');
   appIcon.append(appIconImg);
   parentNode.append(appIcon);
 }
